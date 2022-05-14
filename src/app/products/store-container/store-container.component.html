@@ -1,0 +1,23 @@
+<div class="px-4 py-5 text-center bg-dark">
+  <h1 class="display-5 fw-bold text-white">{{ store?.name }}</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4 text-white">
+      {{ store?.category }}
+    </p>
+    <ngb-accordion #acc="ngbAccordion">
+      <ngb-panel title="Employees">
+        <ng-template ngbPanelContent>
+          <div *ngFor="let employ of store?.employees">
+            <p>{{ employ }}</p>
+          </div>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <button type="button" class="btn btn-primary btn-md mt-3 px-4 gap-3">
+        Add Product
+      </button>
+    </div>
+  </div>
+</div>

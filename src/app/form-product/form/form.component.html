@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="col-8 mx-auto my-5">
+    <form #f="ngForm" (ngSubmit)="submit(f)">
+      <div class="form-group mb-2">
+        <label for="title" class="mb-2">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          aria-describedby="title"
+          placeholder="Title"
+          maxlength="180"
+          required
+          ngModel
+          #titleField="ngModel"
+        />
+        <small id="emailHelp" class="form-text text-muted"
+          >Max 180 caracter</small
+        >
+        <p *ngIf="titleField.invalid && titleField.touched" class="text-danger">
+          <small>Required</small>
+        </p>
+      </div>
+
+      <div class="form-group mb-2">
+        <label for="category" class="my-2">Category</label>
+        <input
+          type="text"
+          class="form-control"
+          id="category"
+          name="category"
+          placeholder="Category"
+          required
+          ngModel
+          #categoryField="ngModel"
+        />
+        <p
+          *ngIf="categoryField.invalid && categoryField.touched"
+          class="text-danger"
+        >
+          <small>Required</small>
+        </p>
+      </div>
+      <div class="form-group mb-2">
+        <label for="category" class="my-2">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          name="price"
+          placeholder="Price"
+          required
+          ngModel
+          #priceField="ngModel"
+        />
+        <p *ngIf="priceField.invalid && priceField.touched" class="text-danger">
+          <small>Required</small>
+        </p>
+      </div>
+      <div class="form-group mb-2">
+        <label for="employee" class="my-2">Employee</label>
+        <input
+          type="text"
+          class="form-control"
+          id="employee"
+          name="employee"
+          placeholder="Employee"
+          required
+          ngModel
+          #employeeField="ngModel"
+        />
+        <p
+          *ngIf="employeeField.invalid && employeeField.touched"
+          class="text-danger"
+        >
+          <small>Required</small>
+        </p>
+      </div>
+      <div class="form-group mb-2">
+        <label for="description" class="my-2">Description</label>
+        <textarea
+          class="form-control"
+          name="description"
+          id="description"
+          cols="30"
+          rows="10"
+          required
+          ngModel
+          #descriptionField="ngModel"
+        ></textarea>
+
+        <p
+          *ngIf="descriptionField.invalid && descriptionField.touched"
+          class="text-danger"
+        >
+          <small>Required</small>
+        </p>
+      </div>
+      <div class="form-group mb-2">
+        <label for="reviews" class="my-2">First Review</label>
+        <textarea
+          class="form-control"
+          name="reviews"
+          id="reviews"
+          cols="30"
+          rows="10"
+          ngModel
+        ></textarea>
+        <small id="descriptionlHelp" class="form-text text-muted"
+          >Optional</small
+        >
+      </div>
+
+      <button [disabled]="f.invalid" type="submit" class="btn btn-primary my-3">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

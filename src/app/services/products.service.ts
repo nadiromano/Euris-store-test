@@ -20,4 +20,16 @@ export class ProductService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.URL}stores/${this.ACC}/products`);
   }
+
+  deleteProduct(id: string) {
+    this.http
+      .delete(`${this.URL}stores/${this.ACC}/products/${id}`)
+      .subscribe();
+  }
+
+  addProduct(product: Product) {
+    this.http
+      .post(`${this.URL}stores/${this.ACC}/products`, product)
+      .subscribe();
+  }
 }

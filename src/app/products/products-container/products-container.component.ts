@@ -20,6 +20,10 @@ export class ProductsContainerComponent implements OnInit {
     );
   }
 
+  onDeleteProduct(id: string) {
+    this.productService.deleteProduct(id);
+  }
+
   ngOnInit(): void {
     this.onGetProducts();
   }

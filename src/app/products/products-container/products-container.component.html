@@ -1,6 +1,9 @@
 <div class="container mt-4">
+  <app-layout-switch (changeView)="switchView($event)"></app-layout-switch>
+
   <div
-    class="row row-cols-1 g-4 mb-2"
+    class="row g-4 mb-2"
+    [ngClass]="layout === 'list' ? 'row-cols-1' : 'row-cols-2 row-cols-sm-3'"
     *ngIf="products.length > 0; else noProducts"
   >
     <div class="col" *ngFor="let product of products">
@@ -12,12 +15,17 @@
           <p class="card-text mt-3">
             {{ product.data.description }}
           </p>
-          <button *ngIf="product.data.reviews" class="btn btn-primary btn-sm">
+          <button
+            *ngIf="product.data.reviews"
+            class="btn btn-primary btn-sm"
+            [ngClass]="layout === 'list' ? '' : 'mt-2 me-2'"
+          >
             Show Review
             <span>{{ product.data.reviews.length }}</span>
           </button>
           <button
-            class="btn btn-danger btn-sm ms-2"
+            class="btn btn-danger btn-sm"
+            [ngClass]="layout === 'list' ? 'ms-2' : 'mt-2'"
             (click)="onDeleteProduct(product.id)"
           >
             Delete Product

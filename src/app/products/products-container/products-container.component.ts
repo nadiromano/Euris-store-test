@@ -11,6 +11,7 @@ export class ProductsContainerComponent implements OnInit {
   constructor(private productService: ProductService) {}
   products: Product[] = [];
   error: string = '';
+  layout: string = 'list';
 
   onGetProducts() {
     this.productService.getProducts().subscribe(
@@ -22,6 +23,11 @@ export class ProductsContainerComponent implements OnInit {
 
   onDeleteProduct(id: string) {
     this.productService.deleteProduct(id);
+  }
+
+  switchView(layout: string) {
+    this.layout = layout;
+    console.log(layout);
   }
 
   ngOnInit(): void {

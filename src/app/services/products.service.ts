@@ -12,7 +12,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
   private ACC: string = environment.acc;
   private URL: string = environment.url;
-
+  // viewList: boolean = true;
   getStore(): Observable<Store> {
     return this.http.get<Store>(`${this.URL}stores/${this.ACC}`);
   }
@@ -32,4 +32,12 @@ export class ProductService {
       .post(`${this.URL}stores/${this.ACC}/products`, product)
       .subscribe();
   }
+
+  // listView() {
+  //   this.viewList = true;
+  // }
+
+  // cardView() {
+  //   this.viewList = false;
+  // }
 }

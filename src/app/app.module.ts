@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsContainerComponent } from './products/products-container/products-container.component';
 import { FormComponent } from './form-product/form/form.component';
 import { FormsModule } from '@angular/forms';
+import { LayoutSwitchComponent } from './layout/layout-switch/layout-switch.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     StoreContainerComponent,
     ProductsContainerComponent,
     FormComponent,
+    LayoutSwitchComponent,
   ],
   imports: [BrowserModule, NgbModule, HttpClientModule, FormsModule],
   providers: [],

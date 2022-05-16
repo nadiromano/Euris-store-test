@@ -9,8 +9,18 @@ import { ProductService } from 'src/app/services/products.service';
 })
 export class FormComponent implements OnInit {
   constructor(private productService: ProductService) {}
+  employees: string[] = [];
 
-  ngOnInit(): void {}
+  getEmployee() {
+    this.productService
+      .getStore()
+      .subscribe((data) => this.employees.push(...data.employees));
+    console.log(this.employees);
+  }
+
+  ngOnInit(): void {
+    this.getEmployee();
+  }
 
   submit(f: NgForm) {
     let review: string[] = [];

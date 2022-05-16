@@ -1,8 +1,14 @@
 <div class="container">
   <div class="col-8 mx-auto my-5">
+    <button routerLink="home" class="btn btn-outline-info mb-5" type="submit">
+      Back
+    </button>
+
     <form #f="ngForm" (ngSubmit)="submit(f)">
       <div class="form-group mb-2">
-        <label for="title" class="mb-2">Title</label>
+        <label for="title" class="mb-2"
+          >Title<span style="color: red">*</span></label
+        >
         <input
           type="text"
           class="form-control"
@@ -24,7 +30,9 @@
       </div>
 
       <div class="form-group mb-2">
-        <label for="category" class="my-2">Category</label>
+        <label for="category" class="my-2"
+          >Category<span style="color: red">*</span></label
+        >
         <input
           type="text"
           class="form-control"
@@ -43,7 +51,9 @@
         </p>
       </div>
       <div class="form-group mb-2">
-        <label for="category" class="my-2">Price</label>
+        <label for="category" class="my-2"
+          >Price<span style="color: red">*</span></label
+        >
         <input
           type="number"
           class="form-control"
@@ -59,7 +69,9 @@
         </p>
       </div>
       <div class="form-group mb-2">
-        <label for="employee" class="my-2">Employee</label>
+        <label for="employee" class="my-2"
+          >Employee<span style="color: red">*</span></label
+        >
         <input
           type="text"
           class="form-control"
@@ -70,6 +82,7 @@
           ngModel
           #employeeField="ngModel"
         />
+
         <p
           *ngIf="employeeField.invalid && employeeField.touched"
           class="text-danger"
@@ -78,7 +91,9 @@
         </p>
       </div>
       <div class="form-group mb-2">
-        <label for="description" class="my-2">Description</label>
+        <label for="description" class="my-2"
+          >Description<span style="color: red">*</span></label
+        >
         <textarea
           class="form-control"
           name="description"

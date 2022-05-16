@@ -10,6 +10,7 @@ import { ProductsContainerComponent } from './products/products-container/produc
 import { FormComponent } from './form-product/form/form.component';
 import { FormsModule } from '@angular/forms';
 import { LayoutSwitchComponent } from './layout/layout-switch/layout-switch.component';
+import { AppRoutingModule } from './app.routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,13 @@ import { LayoutSwitchComponent } from './layout/layout-switch/layout-switch.comp
     FormComponent,
     LayoutSwitchComponent,
   ],
-  imports: [BrowserModule, NgbModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    NgbModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

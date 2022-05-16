@@ -10,7 +10,7 @@ export class LayoutSwitchComponent implements OnInit {
   @Output() changeView = new EventEmitter<string>();
   view: string = 'list';
 
-  constructor(private productService: ProductService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 

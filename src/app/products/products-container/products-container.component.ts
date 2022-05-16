@@ -12,6 +12,8 @@ export class ProductsContainerComponent implements OnInit {
   products: Product[] = [];
   error: string = '';
   layout: string = 'list';
+  idSelected: string = '';
+  isOpen: boolean = false;
 
   onGetProducts() {
     this.productService.getProducts().subscribe(
@@ -28,6 +30,11 @@ export class ProductsContainerComponent implements OnInit {
   switchView(layout: string) {
     this.layout = layout;
     console.log(layout);
+  }
+
+  onConfirm(id: string) {
+    this.idSelected = id;
+    this.isOpen = !this.isOpen;
   }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container mt-4" *ngIf="products.length > 0; else loading">
   <app-layout-switch (changeView)="switchView($event)"></app-layout-switch>
 
   <div
@@ -7,7 +7,7 @@
     *ngIf="products.length > 0; else noProducts"
   >
     <div class="col" *ngFor="let product of products">
-      <div class="card">
+      <div class="card product__card">
         <div class="card-body">
           <span class="badge bg-secondary rounded-pill">{{ product.id }}</span>
           <span class="card-title ms-2 fw-bold">{{ product.data.title }}</span>
@@ -26,10 +26,27 @@
           <button
             class="btn btn-danger btn-sm"
             [ngClass]="layout === 'list' ? 'ms-2' : 'mt-2'"
-            (click)="onDeleteProduct(product.id)"
+            (click)="onConfirm(product.id)"
           >
             Delete Product
           </button>
+          <div *ngIf="idSelected === product.id && isOpen === true">
+            <hr />
+            <button
+              class="btn btn-outline-info btn-sm"
+              [ngClass]="layout === 'list' ? 'ms-2' : 'mt-2'"
+              (click)="onConfirm(product.id)"
+            >
+              Dont
+            </button>
+            <button
+              class="btn btn-danger btn-sm"
+              [ngClass]="layout === 'list' ? 'ms-2' : 'mt-2'"
+              (click)="onDeleteProduct(product.id)"
+            >
+              Confirm?
+            </button>
+          </div>
         </div>
         <div class="card-footer">
           <div class="text-muted fw-bold">
@@ -47,4 +64,14 @@
 
 <ng-template #noProducts>
   <p>Non è presente nessun progetto</p>
+</ng-template>
+
+<ng-template #loading>
+  <div class="load-spinner">
+    <div class="lds">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
 </ng-template>

@@ -1,0 +1,25 @@
+<div class="px-4 py-5 text-center bg-dark">
+  <h1 class="display-5 fw-bold text-white">Reviews</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4 text-white">
+      {{ product.title }}
+    </p>
+  </div>
+</div>
+
+<div class="container my-3">
+  <button routerLink="home" class="btn btn-outline-info mb-5" type="submit">
+    Back
+  </button>
+  <div *ngFor="let review of product.reviews">
+    <div class="card product__card">
+      <div class="card-body">
+        <blockquote class="blockquote">
+          <p class="mb-0">
+            <span class="quote">"</span>{{ review }}<span class="quote">"</span>
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</div>

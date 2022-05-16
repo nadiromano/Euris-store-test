@@ -1,6 +1,6 @@
 export interface Data {
   employee: string;
-  reviews?: string[];
+  reviews: string[];
   title: string;
   description: string;
   category: string;

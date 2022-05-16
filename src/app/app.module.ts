@@ -11,6 +11,8 @@ import { FormComponent } from './form-product/form/form.component';
 import { FormsModule } from '@angular/forms';
 import { LayoutSwitchComponent } from './layout/layout-switch/layout-switch.component';
 import { AppRoutingModule } from './app.routing.module';
+import { ReviewComponent } from './review/review.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { AppRoutingModule } from './app.routing.module';
     ProductsContainerComponent,
     FormComponent,
     LayoutSwitchComponent,
+    ReviewComponent,
+    AnalyticsComponent,
   ],
   imports: [
     BrowserModule,

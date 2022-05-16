@@ -1,3 +1,5 @@
+<app-store-container></app-store-container>
+
 <div class="container mt-4" *ngIf="products.length > 0; else loading">
   <app-layout-switch (changeView)="switchView($event)"></app-layout-switch>
 
@@ -19,6 +21,7 @@
             *ngIf="product.data.reviews"
             class="btn btn-primary btn-sm"
             [ngClass]="layout === 'list' ? '' : 'mt-2 me-2'"
+            (click)="onReviewSelect(product.id)"
           >
             Show Review
             <span>{{ product.data.reviews.length }}</span>

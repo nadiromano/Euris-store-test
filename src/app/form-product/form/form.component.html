@@ -120,11 +120,15 @@
           id="reviews"
           cols="30"
           rows="10"
+          required
           ngModel
         ></textarea>
-        <small id="descriptionlHelp" class="form-text text-muted"
-          >Optional</small
+        <p
+          *ngIf="descriptionField.invalid && descriptionField.touched"
+          class="text-danger"
         >
+          <small>Required</small>
+        </p>
       </div>
 
       <button [disabled]="f.invalid" type="submit" class="btn btn-primary my-3">

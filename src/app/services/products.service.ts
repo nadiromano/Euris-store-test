@@ -21,23 +21,21 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.URL}stores/${this.ACC}/products`);
   }
 
+  getProduct(id: any): Observable<Product> {
+    return this.http.get<Product>(
+      `${this.URL}stores/${this.ACC}/products/${id}`
+    );
+  }
+
   deleteProduct(id: string) {
     this.http
       .delete(`${this.URL}stores/${this.ACC}/products/${id}`)
       .subscribe();
   }
 
-  addProduct(product: Product) {
+  addProduct(product: any) {
     this.http
       .post(`${this.URL}stores/${this.ACC}/products`, product)
       .subscribe();
   }
-
-  // listView() {
-  //   this.viewList = true;
-  // }
-
-  // cardView() {
-  //   this.viewList = false;
-  // }
 }

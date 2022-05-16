@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/products.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-products-container',
   templateUrl: './products-container.component.html',
   styleUrls: ['./products-container.component.css'],
 })
 export class ProductsContainerComponent implements OnInit {
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private router: Router) {}
   products: Product[] = [];
   error: string = '';
   layout: string = 'list';
@@ -35,6 +35,10 @@ export class ProductsContainerComponent implements OnInit {
   onConfirm(id: string) {
     this.idSelected = id;
     this.isOpen = !this.isOpen;
+  }
+
+  onReviewSelect(id: string) {
+    this.router.navigate(['/review', id]);
   }
 
   ngOnInit(): void {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/products.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-products-container',
   templateUrl: './products-container.component.html',
@@ -14,17 +15,21 @@ export class ProductsContainerComponent implements OnInit {
   layout: string = 'list';
   idSelected: string = '';
   isOpen: boolean = false;
-
-  onGetProducts() {
-    this.productService.getProducts().subscribe(
-      (response) => (this.products = response),
-      (error: any) => (this.error = error),
-      () => console.log('done')
-    );
-  }
+  products$!: Observable<Product[]>;
+  // onGetProducts() {
+  //   this.productService.getProducts().subscribe(
+  //     (response) => (this.products = response),
+  //     (error: any) => (this.error = error),
+  //     () => console.log('done')
+  //   );
+  // }
 
   onDeleteProduct(id: string) {
-    this.productService.deleteProduct(id);
+    this.productService
+      .deleteProduct(id)
+      .subscribe(
+        (data) => (this.products$ = this.productService.getProducts())
+      );
   }
 
   switchView(layout: string) {
@@ -42,6 +47,6 @@ export class ProductsContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.onGetProducts();
+    this.products$ = this.productService.getProducts();
   }
 }

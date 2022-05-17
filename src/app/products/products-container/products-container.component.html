@@ -1,69 +1,74 @@
 <app-store-container></app-store-container>
 
-<div class="container mt-4" *ngIf="products.length > 0; else loading">
-  <app-layout-switch (changeView)="switchView($event)"></app-layout-switch>
+<ng-container *ngIf="products$ | async as products; else loading">
+  <div class="container">
+    <app-layout-switch (changeView)="switchView($event)"></app-layout-switch>
+    <div
+      class="row g-4 mb-2"
+      [ngClass]="layout === 'list' ? 'row-cols-1' : 'row-cols-2 row-cols-sm-3'"
+      *ngIf="products.length > 0; else noProducts"
+    >
+      <div class="col" *ngFor="let product of products">
+        <div class="card product__card">
+          <div class="card-body">
+            <span class="badge bg-secondary rounded-pill">{{
+              product.id
+            }}</span>
+            <span class="card-title ms-2 fw-bold">{{
+              product.data.title
+            }}</span>
 
-  <div
-    class="row g-4 mb-2"
-    [ngClass]="layout === 'list' ? 'row-cols-1' : 'row-cols-2 row-cols-sm-3'"
-    *ngIf="products.length > 0; else noProducts"
-  >
-    <div class="col" *ngFor="let product of products">
-      <div class="card product__card">
-        <div class="card-body">
-          <span class="badge bg-secondary rounded-pill">{{ product.id }}</span>
-          <span class="card-title ms-2 fw-bold">{{ product.data.title }}</span>
-
-          <p class="card-text mt-3">
-            {{ product.data.description }}
-          </p>
-          <button
-            *ngIf="product.data.reviews"
-            class="btn btn-primary btn-sm"
-            [ngClass]="layout === 'list' ? '' : 'mt-2 me-2'"
-            (click)="onReviewSelect(product.id)"
-          >
-            Show Review
-            <span>{{ product.data.reviews.length }}</span>
-          </button>
-          <button
-            class="btn btn-danger btn-sm"
-            [ngClass]="layout === 'list' ? 'ms-2' : 'mt-2'"
-            (click)="onConfirm(product.id)"
-          >
-            Delete Product
-          </button>
-          <div *ngIf="idSelected === product.id && isOpen === true">
-            <hr />
+            <p class="card-text mt-3">
+              {{ product.data.description }}
+            </p>
             <button
-              class="btn btn-outline-info btn-sm"
-              [ngClass]="layout === 'list' ? 'ms-2' : 'mt-2'"
-              (click)="onConfirm(product.id)"
+              *ngIf="product.data.reviews"
+              class="btn btn-primary btn-sm"
+              [ngClass]="layout === 'list' ? '' : 'mt-2 me-2'"
+              (click)="onReviewSelect(product.id)"
             >
-              Dont
+              Show Review
+              <span>{{ product.data.reviews.length }}</span>
             </button>
             <button
               class="btn btn-danger btn-sm"
               [ngClass]="layout === 'list' ? 'ms-2' : 'mt-2'"
-              (click)="onDeleteProduct(product.id)"
+              (click)="onConfirm(product.id)"
             >
-              Confirm?
+              Delete Product
             </button>
+            <div *ngIf="idSelected === product.id && isOpen === true">
+              <hr />
+              <button
+                class="btn btn-outline-info btn-sm"
+                [ngClass]="layout === 'list' ? 'ms-2' : 'mt-2'"
+                (click)="onConfirm(product.id)"
+              >
+                Dont
+              </button>
+              <button
+                class="btn btn-danger btn-sm"
+                [ngClass]="layout === 'list' ? 'ms-2' : 'mt-2'"
+                (click)="onDeleteProduct(product.id)"
+              >
+                Confirm?
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="card-footer">
-          <div class="text-muted fw-bold">
-            {{ product.data.category | uppercase }}
-            <span class="fw-bold ms-2 fs-4">€ {{ product.data.price }}</span>
-          </div>
-          <div class="text-muted">
-            {{ product.data.employee }}
+          <div class="card-footer">
+            <div class="text-muted fw-bold">
+              {{ product.data.category | uppercase }}
+              <span class="fw-bold ms-2 fs-4">€ {{ product.data.price }}</span>
+            </div>
+            <div class="text-muted">
+              {{ product.data.employee }}
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</ng-container>
 
 <ng-template #noProducts>
   <p>Non è presente nessun progetto</p>

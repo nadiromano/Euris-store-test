@@ -113,7 +113,9 @@
         </p>
       </div>
       <div class="form-group mb-2">
-        <label for="reviews" class="my-2">First Review</label>
+        <label for="reviews" class="my-2"
+          >First Review<span style="color: red">*</span></label
+        >
         <textarea
           class="form-control"
           name="reviews"
@@ -135,5 +137,12 @@
         Submit
       </button>
     </form>
+    <div class="load-spinner" *ngIf="isLoading">
+      <div class="lds">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
   </div>
 </div>

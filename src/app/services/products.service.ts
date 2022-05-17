@@ -28,14 +28,10 @@ export class ProductService {
   }
 
   deleteProduct(id: string) {
-    this.http
-      .delete(`${this.URL}stores/${this.ACC}/products/${id}`)
-      .subscribe();
+    return this.http.delete(`${this.URL}stores/${this.ACC}/products/${id}`);
   }
 
   addProduct(product: any) {
-    this.http
-      .post(`${this.URL}stores/${this.ACC}/products`, product)
-      .subscribe();
+    return this.http.post(`${this.URL}stores/${this.ACC}/products`, product);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/products.service';
 
 @Component({
@@ -8,8 +9,9 @@ import { ProductService } from 'src/app/services/products.service';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private router: Router) {}
   employees: string[] = [];
+  isLoading: boolean = false;
 
   getEmployee() {
     this.productService
@@ -26,6 +28,12 @@ export class FormComponent implements OnInit {
     let review: string[] = [];
     review.push(f.value.reviews);
     f.value.reviews = review;
-    this.productService.addProduct(f.value);
+    this.productService.addProduct(f.value).subscribe();
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.router.navigate(['/home']);
+      this.isLoading = false;
+    }, 4000);
   }
 }

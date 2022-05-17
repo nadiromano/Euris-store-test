@@ -34,4 +34,8 @@ export class ProductService {
   addProduct(product: any) {
     return this.http.post(`${this.URL}stores/${this.ACC}/products`, product);
   }
+
+  getCategories() {
+    return this.http.get(`${this.URL}stores/${this.ACC}/stats/categories`);
+  }
 }

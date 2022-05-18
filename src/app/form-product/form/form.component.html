@@ -124,9 +124,10 @@
           rows="10"
           required
           ngModel
+          #reviewsField="ngModel"
         ></textarea>
         <p
-          *ngIf="descriptionField.invalid && descriptionField.touched"
+          *ngIf="reviewsField.invalid && reviewsField.touched"
           class="text-danger"
         >
           <small>Required</small>
